@@ -13,4 +13,5 @@ public class PlayerCharacter {
 	private String ideals;
 	private String bonds;
 	private String flaws;
+	private Attributes attributes;
 }
