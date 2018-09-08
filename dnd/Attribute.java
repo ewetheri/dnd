@@ -31,17 +31,17 @@ public enum Attribute {
 	public static String longhand(String shorthand)
 	{
 		if (shorthand == STRENGTH.shorthand())
-			return "STRENGTH";
+			return "Strength";
 		else if (shorthand == DEXTERITY.shorthand())
-			return "DEXTERITY";
+			return "Dexterity";
 		else if (shorthand == CONSTITUTION.shorthand())
-			return "CONSTITUTION";
+			return "Constitution";
 		else if (shorthand == INTELLIGENCE.shorthand())
-			return "INTELLIGENCE";
+			return "Intelligence";
 		else if (shorthand == WISDOM.shorthand())
-			return "WISDOM";
+			return "Wisdom";
 		else if (shorthand == CHARISMA.shorthand())
-			return "CHARISMA";
+			return "Charisma";
 		else
 			throw new IllegalArgumentException("Not a valid shorthand");
 	}
@@ -49,17 +49,17 @@ public enum Attribute {
 	public static String longhand(int index)
 	{
 		if (index == STRENGTH.index())
-			return "STRENGTH";
+			return "Strength";
 		else if (index == DEXTERITY.index())
-			return "DEXTERITY";
+			return "Dexterity";
 		else if (index == CONSTITUTION.index())
-			return "CONSTITUTION";
+			return "Constitution";
 		else if (index == INTELLIGENCE.index())
-			return "INTELLIGENCE";
+			return "Intelligence";
 		else if (index == WISDOM.index())
-			return "WISDOM";
+			return "Wisdom";
 		else if (index == CHARISMA.index())
-			return "CHARISMA";
+			return "Charisma";
 		else
 			throw new IllegalArgumentException("Not a valid index");
 	}

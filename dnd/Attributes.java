@@ -26,6 +26,11 @@ public class Attributes {
 	public void setStrength(int strength) {
 		this.strength = strength;
 	}
+	
+	public void increaseStrength(int increase)
+	{
+		this.strength += increase;
+	}
 
 	public int getDexterity() {
 		return dexterity;
@@ -33,6 +38,11 @@ public class Attributes {
 
 	public void setDexterity(int dexterity) {
 		this.dexterity = dexterity;
+	}
+	
+	public void increaseDexterity(int increase)
+	{
+		this.dexterity += increase;
 	}
 
 	public int getConstitution() {
@@ -42,6 +52,11 @@ public class Attributes {
 	public void setConstitution(int constitution) {
 		this.constitution = constitution;
 	}
+	
+	public void increaseConstitution(int increase)
+	{
+		this.constitution += increase;
+	}
 
 	public int getIntelligence() {
 		return intelligence;
@@ -49,6 +64,11 @@ public class Attributes {
 
 	public void setIntelligence(int intelligence) {
 		this.intelligence = intelligence;
+	}
+	
+	public void increaseIntelligence(int increase)
+	{
+		this.intelligence += increase;
 	}
 
 	public int getWisdom() {
@@ -58,6 +78,11 @@ public class Attributes {
 	public void setWisdom(int wisdom) {
 		this.wisdom = wisdom;
 	}
+	
+	public void increaseWisdom(int increase)
+	{
+		this.wisdom += increase;
+	}
 
 	public int getCharisma() {
 		return charisma;
@@ -65,6 +90,11 @@ public class Attributes {
 
 	public void setCharisma(int charisma) {
 		this.charisma = charisma;
+	}
+	
+	public void increaseCharisma(int increase)
+	{
+		this.charisma += increase;
 	}
 	
 	public void add(Attributes other)
