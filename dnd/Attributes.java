@@ -2,108 +2,50 @@ package dnd;
 
 public class Attributes {
 
-	private int strength;
-	private int dexterity;
-	private int constitution;
-	private int intelligence;
-	private int wisdom;
-	private int charisma;
+	private int[] values;
 	
 	Attributes (int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma)
 	{
-		this.strength = strength;
-		this.dexterity = dexterity;
-		this.constitution = constitution;
-		this.intelligence = intelligence;
-		this.wisdom = wisdom;
-		this.charisma = charisma;
-	}
-
-	public int getStrength() {
-		return strength;
-	}
-
-	public void setStrength(int strength) {
-		this.strength = strength;
+		this.values[0] = strength;
+		this.values[1] = dexterity;
+		this.values[2] = constitution;
+		this.values[3] = intelligence;
+		this.values[4] = wisdom;
+		this.values[5] = charisma;
 	}
 	
-	public void increaseStrength(int increase)
+	public int score(Attribute attribute)
 	{
-		this.strength += increase;
-	}
-
-	public int getDexterity() {
-		return dexterity;
-	}
-
-	public void setDexterity(int dexterity) {
-		this.dexterity = dexterity;
+		return values[attribute.index()];
 	}
 	
-	public void increaseDexterity(int increase)
+	public int mod(Attribute attribute)
 	{
-		this.dexterity += increase;
-	}
-
-	public int getConstitution() {
-		return constitution;
-	}
-
-	public void setConstitution(int constitution) {
-		this.constitution = constitution;
+		return (values[attribute.index()]/2) - 10;
 	}
 	
-	public void increaseConstitution(int increase)
+	public int modifier(Attribute attribute)
 	{
-		this.constitution += increase;
-	}
-
-	public int getIntelligence() {
-		return intelligence;
-	}
-
-	public void setIntelligence(int intelligence) {
-		this.intelligence = intelligence;
+		return this.mod(attribute);
 	}
 	
-	public void increaseIntelligence(int increase)
+	public void set(Attribute attribute, int value)
 	{
-		this.intelligence += increase;
-	}
-
-	public int getWisdom() {
-		return wisdom;
-	}
-
-	public void setWisdom(int wisdom) {
-		this.wisdom = wisdom;
+		values[attribute.index()] = value;
 	}
 	
-	public void increaseWisdom(int increase)
+	public void increase(Attribute attribute, int increase)
 	{
-		this.wisdom += increase;
-	}
-
-	public int getCharisma() {
-		return charisma;
-	}
-
-	public void setCharisma(int charisma) {
-		this.charisma = charisma;
-	}
-	
-	public void increaseCharisma(int increase)
-	{
-		this.charisma += increase;
+		values[attribute.index()] += increase;
 	}
 	
 	public void add(Attributes other)
 	{
-		this.setStrength(this.getStrength() + other.getStrength());
-		this.setDexterity(this.getDexterity() + other.getDexterity());
-		this.setConstitution(this.getConstitution() + other.getConstitution());
-		this.setIntelligence(this.getIntelligence() + other.getIntelligence());
-		this.setWisdom(this.getWisdom() + other.getWisdom());
-		this.setCharisma(this.getCharisma() + other.getCharisma());
+		this.increase(Attribute.STRENGTH, other.score(Attribute.STRENGTH));
+		this.increase(Attribute.DEXTERITY, other.score(Attribute.DEXTERITY));
+		this.increase(Attribute.CONSTITUTION, other.score(Attribute.CONSTITUTION));
+		this.increase(Attribute.INTELLIGENCE, other.score(Attribute.INTELLIGENCE));
+		this.increase(Attribute.WISDOM, other.score(Attribute.WISDOM));
+		this.increase(Attribute.CHARISMA, other.score(Attribute.CHARISMA));
 	}
 }

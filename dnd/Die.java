@@ -2,7 +2,7 @@ package dnd;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public enum Dice {
+public enum Die {
 
 	D2		("d2", 2),
 	D3		("d3", 3),
@@ -19,7 +19,7 @@ public enum Dice {
 	private final String name;
 	private final int sides;
 	
-	Dice(String name, int sides)
+	Die(String name, int sides)
 	{
 		this.name = name;
 		this.sides = sides;
