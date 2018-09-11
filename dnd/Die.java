@@ -35,9 +35,24 @@ public enum Die {
 		return sides;
 	}
 	
-	public int roll()
+	public Roll roll()
 	{
-		return ThreadLocalRandom.current().nextInt(1, this.sides() + 1);
+		int[] result = {ThreadLocalRandom.current().nextInt(1, this.sides() + 1)};
+		return new Roll(result);
+	}
+	
+	public Roll rollAdvantage()
+	{
+		int result1 = this.roll().result();
+		int result2 = this.roll().result();
+		return new Roll(new int[] {Math.max(result1, result2)});
+	}
+	
+	public Roll rollDisadvantage()
+	{
+		int result1 = this.roll().result();
+		int result2 = this.roll().result();
+		return new Roll(new int[] {Math.min(result1, result2)});
 	}
 	
 }

@@ -18,3 +18,13 @@
 /Equipment.class
 /Armor.class
 /Money.class
+/ArmorEnum.class
+/Weapon.class
+/Item.class
+/Equipable.class
+/DefaultEquipment.class
+/WeaponKeyword.class
+/Roll.class
+/DamageTypes.class
+/DamageType.class
+/Inventory.class

@@ -181,4 +181,14 @@ public class Money {
 		return copper + "cp " + silver + "sp " + electrum + "ep " + gold + "gp " + platinum + "pp";
 	}
 	
+	public boolean equals(Money other)
+	{
+		if (this.value() == other.value())
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
 }
