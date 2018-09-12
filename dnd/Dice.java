@@ -193,5 +193,26 @@ public class Dice {
 			return roll2;
 		}
 	}
+	
+	public int[] checkDice()
+	{
+		return new int[] {num2, num3, num4, num6, num8, num10, num12, num20, num30, num50, num100, modifier};
+	}
+	
+	public boolean equals(Dice other)
+	{
+		int[] value1 = this.checkDice();
+		int[] value2 = other.checkDice();
+		
+		for (int i = 0; i < value1.length; i++)
+		{
+			if (value1[i] != value2[i])
+			{
+				return false;
+			}
+		}
+		
+		return true;
+	}
 
 }

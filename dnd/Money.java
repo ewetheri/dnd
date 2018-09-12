@@ -149,6 +149,11 @@ public class Money {
 		}
 	}
 	
+	public void add(Money value)
+	{
+		this.gain(value);
+	}
+	
 	public void gain(Money value)
 	{
 		this.copper += value.numCopper();

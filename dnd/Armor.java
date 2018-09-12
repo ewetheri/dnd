@@ -47,6 +47,14 @@ public class Armor extends Equipment {
 	
 	public boolean equals(Armor other)
 	{
-		return true;
+		if (	super.equals(other) &&
+				this.AC() == other.AC() &&
+				this.requiredStrength() == other.requiredStrength() &&
+				this.stealthDisadvantage() == other.stealthDisadvantage())
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }

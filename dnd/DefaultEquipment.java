@@ -4,29 +4,29 @@ public enum DefaultEquipment {
 
 	
 	//ARMOR			new armor  NAME					TYPE		WEIGHT	COST					DESC.	AC	REQSTR	STEALTHDIS.
-	PADDED			(new Armor("padded", 			"light", 	8, 		new Money(0,0,0,5), 	null,	11, 0, 		true)),
+	PADDED			(new Armor("padded", 			"light armor", 	8, 		new Money(0,0,0,5), 	null,	11, 0, 		true)),
 
-	LEATHER			(new Armor("leather", 			"light", 	10, 	new Money(0,0,0,10), 	null,	11, 0, 		false)),
+	LEATHER			(new Armor("leather", 			"light armor", 	10, 	new Money(0,0,0,10), 	null,	11, 0, 		false)),
 	
-	STUDDED_LEATHER	(new Armor("studded leather", 	"light", 	13, 	new Money(0,0,0,45), 	null,	12, 0, 		false)),
+	STUDDED_LEATHER	(new Armor("studded leather", 	"light armor", 	13, 	new Money(0,0,0,45), 	null,	12, 0, 		false)),
 	
-	HIDE			(new Armor("hide",			 	"medium", 	12, 	new Money(0,0,0,10), 	null,	12, 0, 		false)),
+	HIDE			(new Armor("hide",			 	"medium armor", 	12, 	new Money(0,0,0,10), 	null,	12, 0, 		false)),
 	
-	CHAIN_SHIRT		(new Armor("chain shirt",	 	"medium", 	20, 	new Money(0,0,0,50), 	null,	13, 0, 		false)),
+	CHAIN_SHIRT		(new Armor("chain shirt",	 	"medium armor", 	20, 	new Money(0,0,0,50), 	null,	13, 0, 		false)),
 	
-	SCALE_MAIL		(new Armor("scale mail",	 	"medium", 	45, 	new Money(0,0,0,50), 	null,	14, 0, 		true)),
+	SCALE_MAIL		(new Armor("scale mail",	 	"medium armor", 	45, 	new Money(0,0,0,50), 	null,	14, 0, 		true)),
 	
-	BREASTPLATE		(new Armor("breastplate",	 	"medium", 	20, 	new Money(0,0,0,400), 	null,	14, 0, 		false)),
+	BREASTPLATE		(new Armor("breastplate",	 	"medium armor", 	20, 	new Money(0,0,0,400), 	null,	14, 0, 		false)),
 	
-	HALF_PLATE		(new Armor("half plate",	 	"medium", 	40, 	new Money(0,0,0,750), 	null,	15, 0, 		true)),
+	HALF_PLATE		(new Armor("half plate",	 	"medium armor", 	40, 	new Money(0,0,0,750), 	null,	15, 0, 		true)),
 	
-	RING_MAIL		(new Armor("ring mail",		 	"heavy", 	40, 	new Money(0,0,0,30), 	null,	14, 0, 		true)),
+	RING_MAIL		(new Armor("ring mail",		 	"heavy armor", 	40, 	new Money(0,0,0,30), 	null,	14, 0, 		true)),
 	
-	CHAIN_MAIL		(new Armor("chain mail",		"heavy", 	55, 	new Money(0,0,0,75), 	null,	16, 13, 	true)),
+	CHAIN_MAIL		(new Armor("chain mail",		"heavy armor", 	55, 	new Money(0,0,0,75), 	null,	16, 13, 	true)),
 	
-	SPLINT			(new Armor("splint",			"heavy", 	60, 	new Money(0,0,0,200), 	null,	17, 15, 	true)),
+	SPLINT			(new Armor("splint",			"heavy armor", 	60, 	new Money(0,0,0,200), 	null,	17, 15, 	true)),
 	
-	PLATE			(new Armor("plate",				"heavy", 	65, 	new Money(0,0,0,1500), 	null,	18, 15, 	true)),
+	PLATE			(new Armor("plate",				"heavy armor", 	65, 	new Money(0,0,0,1500), 	null,	18, 15, 	true)),
 	
 	SHIELD			(new Armor("shield",		 	"shield", 	6, 		new Money(0,0,0,10), 	null,	2,	0, 		false)),
 	
@@ -144,17 +144,17 @@ public enum DefaultEquipment {
 	
 	BASKET			(new Equipment("basket",			"container",	2,		new Money(0,4),			"")),
 	
-	BEDROLL			(new Equipment("bedroll",			"miscellaneous",7,		new Money(0,0,0,1),		"")),
+	BEDROLL			(new Equipment("bedroll",			"tool",			7,		new Money(0,0,0,1),		"")),
 	
 	BELL			(new Equipment("bell",				"tool",			0.1,	new Money(0,0,0,1),		"")),
 	
-	BLANKET			(new Equipment("blanket",			"miscellaneous",3,		new Money(0,5),			"")),
+	BLANKET			(new Equipment("blanket",			"tool",			3,		new Money(0,5),			"")),
 	
 	BLOCK_AND_TACKLE(new Equipment("block and tackle",	"tool",			5,		new Money(0,0,0,1),		"A set of pulleys and cable. When attached to a wall/ceiling, can be used to hoist up to four times normal weight.")),
 	
 	BOOK			(new Equipment("book",				"tool",			5,		new Money(0,0,0,25),	"Might contain poetry, history, lore, or diagrams. If you speak the language of the book, you gain advantage on intelligence checks of the subject the book is on.")),
 	
-	BOTTLE			(new Equipment("glass bottle",		"miscellaneous",3,		new Money(0,0,0,20),	"")),
+	BOTTLE			(new Equipment("glass bottle",		"container",	3,		new Money(0,0,0,20),	"")),
 	
 	BUCKET			(new Equipment("container",			"container",	2,		new Money(5),			"")),
 	
@@ -332,6 +332,11 @@ public enum DefaultEquipment {
 	DefaultEquipment(Equipment equipment)
 	{
 		this.equipment = equipment;
+	}
+	
+	public Equipment get()
+	{
+		return equipment;
 	}
 	
 	
