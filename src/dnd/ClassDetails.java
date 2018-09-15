@@ -1,6 +1,10 @@
 package dnd;
 
-public enum Class {
+import classes.ClassFeature;
+import classes.Specialization;
+import items.Inventory;
+
+public enum ClassDetails {
 	
 	ARTIFICER		(	//Name
 						"Artificer",
@@ -9,7 +13,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D8,
 						//proficiencies
-						new String[] {"light armor", "medium armor", "simple weapons"},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -31,7 +35,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D12,
 						//proficiencies
-						new String[] {"light armor", "medium armor", "shields", "simple weapons", "martial weapons"},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {Attribute.STRENGTH, Attribute.CONSTITUTION},
 						//number of skills they can choose from the following list
@@ -53,7 +57,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D8,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -75,7 +79,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D10,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -97,7 +101,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D8,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -119,7 +123,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D8,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -141,7 +145,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D10,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -163,7 +167,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D8,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -185,7 +189,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D8,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -207,7 +211,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D10,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -229,7 +233,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D10,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -251,7 +255,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D8,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -273,7 +277,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D6,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -295,7 +299,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D8,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -317,7 +321,7 @@ public enum Class {
 						//Hit Dice Size
 						Die.D6,
 						//proficiencies
-						new String[] {},
+						new Inventory(),
 						//saving throws
 						new Attribute[] {},
 						//number of skills they can choose from list
@@ -335,7 +339,7 @@ public enum Class {
 	private final String name;
 	private final String description;
 	private final Die hitDie;
-	private final String[] proficiencies;
+	private final Inventory proficiencies;
 	private final Attribute[] savingThrows;
 	private final int numSkills;
 	private final Skill[] skills;
@@ -343,7 +347,7 @@ public enum Class {
 	private final Specialization[] specializations;
 	private final ClassFeature[] features;
 	
-	Class (String name, String description, Die hitDie, String[] proficiencies, Attribute[] savingThrows, int numSkills, Skill[] skills, String specializationName, Specialization[] specializations, ClassFeature[] features)
+	ClassDetails (String name, String description, Die hitDie, Inventory proficiencies, Attribute[] savingThrows, int numSkills, Skill[] skills, String specializationName, Specialization[] specializations, ClassFeature[] features)
 	{
 		this.name = name;
 		this.description = description;
@@ -369,7 +373,7 @@ public enum Class {
 	
 	public int hitPointLevelUpRandom()
 	{
-		return hitDie.roll();
+		return hitDie.roll().result();
 	}
 	
 	public int hitPointLevelUpSet()
@@ -377,7 +381,7 @@ public enum Class {
 		return hitDie.sides()/2 + 1;
 	}
 	
-	public String[] proficiencies()
+	public Inventory proficiencies()
 	{
 		return proficiencies;
 	}

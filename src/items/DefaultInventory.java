@@ -1,4 +1,4 @@
-package dnd;
+package items;
 
 import java.util.Arrays;
 
@@ -22,6 +22,8 @@ public enum DefaultInventory {
 	
 	TOOLS				("tools", Inventory.allItemsOfType("tool")),
 	
+	MISCELLANEOUS		("miscellaneous", Inventory.allItemsOfType("miscellaneous")),
+	
 	CONSUMABLES			("consumables", Inventory.allItemsOfType("consumable")),
 	
 	AMMUNITION			("ammunition", Inventory.allItemsOfType("ammunition")),
@@ -32,9 +34,11 @@ public enum DefaultInventory {
 	
 	ARCANE_FOCI			("arcane foci", Inventory.allItemsOfType("arcane focus")),
 	
+	DRUIDIC_FOCI		("druidic foci", Inventory.allItemsOfType("druidic focus")),
 	
+	HOLY_SYMBOLS		("holy symbols", Inventory.allItemsOfType("holy symbol")),
 	
-	
+	INSTRUMENTS			("instruments", Inventory.allItemsOfType("instrument")),
 	
 	;
 	

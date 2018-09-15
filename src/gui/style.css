@@ -1,0 +1,13 @@
+/** file: style.css
+ * 
+ */
+
+.title {
+    -fx-font-family: "Supernatural_Knight";
+    -fx-font-size: 50;
+}
+
+.caption {
+    -fx-font-family: "Supernatural_Knight";
+    -fx-font-size: 10;
+}

@@ -1,4 +1,4 @@
-package dnd;
+package items;
 
 public enum WeaponKeyword {
 
@@ -14,7 +14,11 @@ public enum WeaponKeyword {
 	VERSATILE			("Versatile", "This weapon can be used with one or two hands. It deals bonus damage when two hands are used."),
 	SILVERED			("Silvered", "This weapon is coated in silver, making it more effective against certain monsters."),
 	LANCE				("Lance", "This weapon is a lance. It requires two hands to use when you aren't mounted. When you use it against a target within 5 feet of you, you roll with disadvantage."),
-	NET					("Net", "This weapon is a net. Large and smaller creatures hit with it are restrained until freed. A DC 10 Strength check or 5 slashing damage destroys the net.");
+	NET					("Net", "This weapon is a net. Large and smaller creatures hit with it are restrained until freed. A DC 10 Strength check or 5 slashing damage destroys the net."),
+	DOUBLE_SCIMITAR		("Double-bladed Scimitar", "When you make a two-handed attack with this weapon, you can use a bonus action to make a melee attack with the other side of the blade. This attack uses the same ability modifier as the primary. The damage die is 1d4, and it deals slashing damage. This special attack can only be done if you take the Attack action.")
+	
+	;
+	
 	
 	private final String name;
 	private final String description;

@@ -1,4 +1,4 @@
-package dnd;
+package items;
 
 public class Inventory {
 	
@@ -7,24 +7,33 @@ public class Inventory {
 	private final static int STARTING_SIZE = 10;
 	//private final static String SORT_TYPE = "simple";
 	
-	Inventory()
+	public Inventory()
 	{
 		this.items = new Equipment[STARTING_SIZE];
 		this.count = new int[STARTING_SIZE];
 	}
 	
-	Inventory(Equipment item)
+	public Inventory(Equipment item)
 	{
 		this();
 		this.add(item);
 	}
 	
-	Inventory(Equipment[] items)
+	public Inventory(Equipment[] items)
 	{
 		this();
 		for (int i = 0; i < items.length; i++)
 		{
 			this.add(items[i]);
+		}
+	}
+	
+	public Inventory(Inventory items)
+	{
+		this();
+		for (int i = 0; i < items.size(); i++)
+		{
+			this.add(items.get(i));
 		}
 	}
 	
@@ -36,6 +45,16 @@ public class Inventory {
 		}
 		
 		return items[index];
+	}
+	
+	public int getCount( int index)
+	{
+		if (index < 0 || index >= this.size())
+		{
+			throw new ArrayIndexOutOfBoundsException("Not a valid item index. use .size() to find current length of array.");
+		}
+		
+		return count[index];
 	}
 	
 	public int size()
@@ -81,7 +100,7 @@ public class Inventory {
 		return total;
 	}
 	
-	public void add(Equipment item)
+	public Inventory add(Equipment item)
 	{
 		int index = this.find(item);
 		
@@ -99,19 +118,74 @@ public class Inventory {
 			items[pointer] = item;
 			count[pointer] = 1;
 		}
+		
+		return this;
 	}
 	
-	public void add(Inventory other)
+	public void remove(Equipment item)
+	{
+		int index = this.find(item);
+		
+		if (index < 0)
+		{
+			throw new IllegalArgumentException("This inventory does not have ");
+		}
+		else if (count[index] > 1)
+		{
+			count[index]--;
+		}
+		else
+		{
+			for (int i = index; i < this.size()-1; i++)
+			{
+				//System.out.println(items[i].shorthand() + " at index " + i + " is now set to " + items[i+1].shorthand());
+				items[i] = items[i+1];
+				//System.out.println(count[i] + " at index " + i + " is now set to " + count[i+1]);
+				count[i] = count[i+1];
+				
+			}
+			//System.out.println(items[this.size()-1].shorthand() + " at index " + (this.size()-1) + " is now set to null");
+			items[this.size()-1] = null;
+			
+			//System.out.println(count[this.size()] + " at index " + (this.size()) + " is now set to 0");
+			count[this.size()] = 0;
+			
+		}	
+	}
+	
+	public String remove(Inventory items)
+	{
+		String result = "";
+		
+		for (int i = 0; i < items.size(); i++)
+		{
+			try
+			{
+				this.remove(items.get(i));
+				result += "Removed " + items.get(i).shorthand() + "\n";
+			}
+			catch (IllegalArgumentException e)
+			{
+				result += e.getMessage() + items.get(i).shorthand() + "\n";
+			}
+		}
+		
+		return result;
+	}
+	
+	public Inventory add(Inventory other)
 	{
 		for (int i = 0; i < other.size(); i++)
 		{
 			this.add(other.get(i));
 		}
+		
+		return this;
 	}
 	
 	public int find(Equipment item)
 	{
-		for (int i = 0; i < items.length; i++)
+		for (int i = 0; i < this.size(); i++)
 		{
 			if (items[i].equals(item))
 			{
@@ -271,8 +345,25 @@ public class Inventory {
 		return result;
 	}
 	
-	public static void main (String[] args)
+	public String toString()
 	{
+		String result = "";
+		for (int i = 0; i < this.size(); i++)
+		{
+			result += this.get(i).shorthand();
+			if (count[i] > 1)
+			{
+				result += " x" + count[i];
+			}
+			
+			if (i != this.size()-1)
+			{
+				result += ", ";
+			}
+			
+		}
 		
+		return result;
 	}
+	
 }

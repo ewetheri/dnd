@@ -15,7 +15,7 @@ public class Dice {
 	private int num100;
 	private int modifier;
 	
-	Dice(Die die, int modifier)
+	public Dice(Die die, int modifier)
 	{
 		this.initialize();
 		
@@ -24,19 +24,19 @@ public class Dice {
 		this.modifier = modifier;
 	}
 	
-	Dice(int modifier)
+	public Dice(int modifier)
 	{
 		this.initialize();
 		
 		this.modifier = modifier;
 	}
 	
-	Dice(Die die)
+	public Dice(Die die)
 	{
 		this(die, 0);
 	}
 	
-	Dice(Die[] dice, int modifier)
+	public Dice(Die[] dice, int modifier)
 	{
 		this.initialize();
 		
@@ -48,7 +48,7 @@ public class Dice {
 		this.modifier = modifier;
 	}
 	
-	Dice(Die[] dice)
+	public Dice(Die[] dice)
 	{
 		this(dice, 0);
 	}

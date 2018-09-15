@@ -1,4 +1,4 @@
-package dnd;
+package items;
 
 public class Money {
 
@@ -8,27 +8,32 @@ public class Money {
 	private int gold;
 	private int platinum;
 	
-	Money (int copper)
+	public Money ()
+	{
+		this(0,0,0,0,0);
+	}
+	
+	public Money (int copper)
 	{
 		this(copper, 0, 0, 0, 0);
 	}
 	
-	Money (int copper, int silver)
+	public Money (int copper, int silver)
 	{
 		this(copper, silver, 0, 0, 0);
 	}
 	
-	Money (int copper, int silver, int electrum)
+	public Money (int copper, int silver, int electrum)
 	{
 		this(copper, silver, electrum, 0, 0);
 	}
 	
-	Money (int copper, int silver, int electrum, int gold)
+	public Money (int copper, int silver, int electrum, int gold)
 	{
 		this(copper, silver, electrum, gold, 0);
 	}
 	
-	Money (int copper, int silver, int electrum, int gold, int platinum)
+	public Money (int copper, int silver, int electrum, int gold, int platinum)
 	{
 		this.copper = copper;
 		this.silver = silver;
@@ -183,7 +188,29 @@ public class Money {
 	
 	public String toString()
 	{
-		return copper + "cp " + silver + "sp " + electrum + "ep " + gold + "gp " + platinum + "pp";
+		String result = "";
+		
+		if (copper > 0)
+		{
+			result += copper + "cp ";
+		}
+		if (silver > 0)
+		{
+			result += silver + "sp ";
+		}
+		if (electrum > 0)
+		{
+			result += electrum + "ep ";
+		}
+		if (gold > 0)
+		{
+			result += gold + "gp ";
+		}
+		if (platinum > 0)
+		{
+			result += platinum + "pp ";
+		}
+		return result;
 	}
 	
 	public boolean equals(Money other)

@@ -1,4 +1,7 @@
-package dnd;
+package items;
+
+import dnd.DamageType;
+import dnd.Dice;
 
 public class Weapon extends Equipment {
 	

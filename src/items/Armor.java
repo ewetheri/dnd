@@ -1,4 +1,4 @@
-package dnd;
+package items;
 
 public class Armor extends Equipment {
 	

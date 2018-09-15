@@ -32,7 +32,7 @@ public enum Skill {
 		this.attribute = attribute;
 	}
 	
-	public String skillName()
+	public String shorthand()
 	{
 		return name;
 	}
@@ -41,4 +41,5 @@ public enum Skill {
 	{
 		return attribute;
 	}
+	
 }
