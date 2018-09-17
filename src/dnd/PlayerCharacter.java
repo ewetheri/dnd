@@ -10,9 +10,9 @@ public class PlayerCharacter extends Character {
 	private String bonds;
 	private String flaws;
 	
-	PlayerCharacter(String name, String description, double weight, Size size, int speed, String player)
+	PlayerCharacter(String name, String description, double weight, Size size, int speed, Race race, String player)
 	{
-		super(name, description, weight, size, speed);
+		super(name, description, weight, size, speed, race);
 		this.player = player;
 		this.personality = "";
 		this.ideals = "";

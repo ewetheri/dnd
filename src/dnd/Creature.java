@@ -3,11 +3,12 @@ package dnd;
 public class Creature {
 
 	private String name;
+	private String description;
 	private double weight;
 	private Size size;
 	private int speed;
 	
-	Creature (String name, double weight, Size size, int speed)
+	Creature (String name, String description, double weight, Size size, int speed)
 	{
 		this.name = name;
 		this.weight = weight;
@@ -18,6 +19,11 @@ public class Creature {
 	public String name()
 	{
 		return name;
+	}
+	
+	public String description()
+	{
+		return description;
 	}
 	
 	public double weight()
@@ -33,6 +39,11 @@ public class Creature {
 	public void setName(String name)
 	{
 		this.name = name;
+	}
+	
+	public void setDescription(String description)
+	{
+		this.description = description;
 	}
 	
 	public void setWeight(double weight)

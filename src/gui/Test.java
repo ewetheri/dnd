@@ -5,11 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.URL;
-import java.net.UnknownHostException;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -39,15 +35,17 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import places.Land;
+import places.Map;
 
 public class Test extends Application {
 	
-	public Font huge = null;
-	public Font big = null;
-	public Font medium = null;
-	public Font small = null;
-	public Font tiny = null;
-	private final int ANIMATION_LENGTH = 2;
+	public static Font huge = null;
+	public static Font big = null;
+	public static Font medium = null;
+	public static Font small = null;
+	public static Font tiny = null;
+	private static final int ANIMATION_LENGTH = 2;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception
@@ -320,7 +318,8 @@ public class Test extends Application {
 		EventHandler<MouseEvent> charactersClick = new EventHandler<MouseEvent>()
 		{ 
 			@Override 
-			public void handle(MouseEvent e) { 
+			public void handle(MouseEvent e)
+			{ 
 				BorderPane characterViewer = new BorderPane();
 				characterViewer.setPadding(new Insets(10));;
 				hub.setCenter(characterViewer);
@@ -355,7 +354,13 @@ public class Test extends Application {
 		{ 
 			@Override 
 			public void handle(MouseEvent e) { 
-				hub.setCenter(null);
+				Map map = new Map("Test Map", "A map that should be mostly plains, w/ some other shit", Land.PLAINS);
+				map.set(5, 5, Land.FOREST);
+				map.set(6, 5, Land.FOREST);
+				map.set(5, 6, Land.FOREST);
+				map.set(6, 6, Land.FOREST);
+				MapViewer mapView = new MapViewer(map);
+				hub.setCenter(mapView.getHandle());
 			} 
 		};
 		

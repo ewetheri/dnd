@@ -7,7 +7,7 @@ import items.Money;
 
 public class Character extends Creature {
 
-	private String description;
+	private Race race;
 	private Attributes attributes;
 	private Skill[] skills;
 	private CharacterClass[] classes;
@@ -15,21 +15,16 @@ public class Character extends Creature {
 	private Inventory inventory;
 	private Money money;
 	
-	Character(String name, String description, double weight, Size size, int speed)
+	Character(String name, String description, double weight, Size size, int speed, Race race)
 	{
-		super(name, weight, size, speed);
+		super(name, description, weight, size, speed);
+		this.race = race;
 		this.attributes = null;
 		this.skills = new Skill[0];
 		this.classes = new CharacterClass[0];
 		this.levels = new int[0];
-		this.description = description;
 		this.inventory = new Inventory();
 		this.money = new Money();
-	}
-	
-	Character(String name, double weight, Size size, int speed)
-	{
-		this(name, "", weight, size, speed);
 	}
 	
 	public boolean ready()
@@ -40,6 +35,16 @@ public class Character extends Creature {
 		}
 		
 		return true;
+	}
+	
+	public Race race()
+	{
+		return race;
+	}
+	
+	public void changeRace(Race race)
+	{
+		this.race = race;
 	}
 
 	public Attributes attributes() {
@@ -175,14 +180,6 @@ public class Character extends Creature {
 	
 	public int[] levels() {
 		return levels;
-	}
-
-	public String description() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 	
 	public int numClasses()

@@ -7,17 +7,12 @@ public class Monster extends Creature {
 	private Attack[] attacks;
 	private int AC;
 	
-	Monster(String name, String type, double weight, Size size, int speed)
+	Monster(String name, String description, String type, double weight, Size size, int speed)
 	{
-		super(name, weight, size, speed);
+		super(name, description, weight, size, speed);
 		this.type = type;
 		attacks = new Attack[0];
 		AC = 0;
-	}
-	
-	Monster(String name, double weight, Size size, int speed)
-	{
-		this(name, "", weight, size, speed);
 	}
 	
 	public int indexOfAttack(Attack attack)
@@ -63,5 +58,9 @@ public class Monster extends Creature {
 		
 	}
 	
+	public void clearAttacks()
+	{
+		attacks = new Attack[0];
+	}
 	
 }
