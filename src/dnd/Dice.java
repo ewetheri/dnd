@@ -55,20 +55,51 @@ public class Dice {
 	
 	public Dice addDie(Die die)
 	{
-		switch(die)
+		if (die.diceName().equals("d2"))
 		{
-			case D2 : num2 += 1;
-			case D3 : num3 += 1;
-			case D4 : num4 += 1;
-			case D6 : num6 += 1;
-			case D8 : num8 += 1;
-			case D10 : num10 += 1;
-			case D12 : num12 += 1;
-			case D20 : num20 += 1;
-			case D30 : num30 += 1;
-			case D50 : num50 += 1;
-			case D100 : num100 += 1;
+			num2 += 1;
 		}
+		else if (die.diceName().equals("d3"))
+		{
+			num3 += 1;
+		}
+		else if (die.diceName().equals("d4"))
+		{
+			num4 += 1;
+		}
+		else if (die.diceName().equals("d6"))
+		{
+			num6 += 1;
+		}
+		else if (die.diceName().equals("d8"))
+		{
+			num8 += 1;
+		}
+		else if (die.diceName().equals("d10"))
+		{
+			num10 += 1;
+		}
+		else if (die.diceName().equals("d12"))
+		{
+			num12 += 1;
+		}
+		else if (die.diceName().equals("d20"))
+		{
+			num20 += 1;
+		}
+		else if (die.diceName().equals("d30"))
+		{
+			num30 += 1;
+		}
+		else if (die.diceName().equals("d50"))
+		{
+			num50 += 1;
+		}
+		else if (die.diceName().equals("d100"))
+		{
+			num100 += 1;
+		}
+		
 		
 		return this;
 	}
@@ -213,6 +244,158 @@ public class Dice {
 		}
 		
 		return true;
+	}
+	
+	@Override
+	public String toString()
+	{
+		String result = "";
+		boolean first = true;
+		
+		if(num2 > 0)
+		{
+			if (!first)
+			{
+				result += " + ";
+			}
+			
+			result += (num2 + "d2");
+			
+			first = false;
+		}
+		if(num3 > 0)
+		{
+			if (!first)
+			{
+				result += " + ";
+			}
+			
+			result += (num3 + "d3");
+			
+			first = false;
+		}
+		if(num4 > 0)
+		{
+			if (!first)
+			{
+				result += " + ";
+			}
+			
+			result += (num4 + "d4");
+			
+			first = false;
+		}
+		if(num6 > 0)
+		{
+			if (!first)
+			{
+				result += " + ";
+			}
+			
+			result += (num6 + "d6");
+			
+			first = false;
+		}
+		if(num8 > 0)
+		{
+			if (!first)
+			{
+				result += " + ";
+			}
+			
+			result += (num8 + "d8");
+			
+			first = false;
+		}
+		if(num10 > 0)
+		{
+			if (!first)
+			{
+				result += " + ";
+			}
+			
+			result += (num10 + "d10");
+			
+			first = false;
+		}
+		if(num12 > 0)
+		{
+			if (!first)
+			{
+				result += " + ";
+			}
+			
+			result += (num12 + "d12");
+			
+			first = false;
+		}
+		if(num20 > 0)
+		{
+			if (!first)
+			{
+				result += " + ";
+			}
+			
+			result += (num20 + "d20");
+			
+			first = false;
+		}
+		if(num30 > 0)
+		{
+			if (!first)
+			{
+				result += " + ";
+			}
+			
+			result += (num30 + "d30");
+			
+			first = false;
+		}
+		if(num50 > 0)
+		{
+			if (!first)
+			{
+				result += " + ";
+			}
+			
+			result += (num50 + "d50");
+			
+			first = false;
+		}
+		if(num100 > 0)
+		{
+			if (!first)
+			{
+				result += " + ";
+			}
+			
+			result += (num100 + "d100");
+			
+			first = false;
+		}
+		if(modifier != 0)
+		{
+			if (!first)
+			{
+				result += " ";
+				
+			}
+			
+			if (modifier > 0)
+			{
+				result += "+ " + modifier;
+			}
+			else
+			{
+				result += "- " + (-1 * modifier);
+			}
+			
+			first = false;
+		}
+		
+		
+		
+		return result;
 	}
 
 }

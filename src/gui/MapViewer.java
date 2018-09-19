@@ -50,7 +50,7 @@ public class MapViewer {
 				Land temp = map.get(i, j);
 				view[i][j].setFill(temp.color());
 				Text tooltip = new Text(temp.type());
-				tooltip.setFont(Test.tiny);
+				tooltip.setFont(Main.tiny);
 				tooltip.toFront();
 				
 				int row = i;
@@ -117,7 +117,7 @@ public class MapViewer {
 			palette[i].setFill(land.color());
 			
 			Text tooltip = new Text(land.type());
-			tooltip.setFont(Test.tiny);
+			tooltip.setFont(Main.tiny);
 			tooltip.toFront();
 			
 			EventHandler<MouseEvent> brushEnter = new EventHandler<MouseEvent>()

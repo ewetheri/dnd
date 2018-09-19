@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+
+import chat.Message;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -38,14 +40,14 @@ import javafx.util.Duration;
 import places.Land;
 import places.Map;
 
-public class Test extends Application {
+public class Main extends Application {
 	
 	public static Font huge = null;
 	public static Font big = null;
 	public static Font medium = null;
 	public static Font small = null;
 	public static Font tiny = null;
-	private static final int ANIMATION_LENGTH = 2;
+	private static final int ANIMATION_LENGTH = 1;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception
@@ -195,18 +197,21 @@ public class Test extends Application {
 	{
 		ObservableList<Node> rootList = root.getChildren();
 		
-		String ip = Test.getIp();
+		String ip = Main.getIp();
 		
 		Text hostIP = new Text(ip);
 		hostIP.setFont(small);
 		
-		TextField hostPort = new TextField("Port to use.");
+		TextField hostPort = new TextField();
+		hostPort.setPromptText("Port to use.");
 		hostPort.setFont(small);
 		
-		TextField joinIP = new TextField("IP to connect to.");
+		TextField joinIP = new TextField();
+		joinIP.setPromptText("IP to connect to.");
 		joinIP.setFont(small);
 		
-		TextField joinPort = new TextField("Port to connect to.");
+		TextField joinPort = new TextField();
+		joinPort.setPromptText("Port to connect to.");
 		joinPort.setFont(small);
 		
 		Button host = new Button("Host");
@@ -249,11 +254,83 @@ public class Test extends Application {
 			} 
 		}; 
 					    
+		EventHandler<ActionEvent> openName = new EventHandler<ActionEvent>()
+		{ 
+			@Override 
+			public void handle(ActionEvent e) {
+				rootList.remove(form);
+					
+				try
+				{
+					setName(primaryStage, root);
+				}
+				catch (Exception e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			} 
+		};
+					    
+		timeline.setOnFinished(openName);
+					    
+		host.addEventFilter(MouseEvent.MOUSE_CLICKED, buttonClick);
+		
+	}
+	
+	public void setName(Stage primaryStage, Group root)
+	{
+		ObservableList<Node> rootList = root.getChildren();
+		
+		TextField username = new TextField();
+		username.setPromptText("Username");
+		username.setFont(small);
+		
+		TextField password = new TextField();
+		password.setPromptText("Password");
+		password.setFont(small);
+		
+		Button login = new Button("Login");
+		login.setFont(small);
+		login.setMinWidth(300);
+		
+		VBox form = new VBox();
+		
+		form.setPadding(new Insets(200,200,200,350));
+		form.setSpacing(40);
+		
+		form.getChildren().add(username);
+		form.getChildren().add(password);
+		form.getChildren().add(login);
+		
+		rootList.add(form);
+		
+		//animation to play when clicking host button
+		Timeline timeline = new Timeline(
+			new KeyFrame(Duration.ZERO, 
+				new KeyValue(form.opacityProperty(), 1)),
+			new KeyFrame(Duration.seconds(ANIMATION_LENGTH),
+				new KeyValue(form.opacityProperty(), 0))
+			);
+					    
+		//things to remove when clicking startButton
+		EventHandler<MouseEvent> buttonClick = new EventHandler<MouseEvent>()
+		{ 
+			@Override 
+			public void handle(MouseEvent e) { 
+				timeline.play();
+			} 
+		}; 
+					    
 		EventHandler<ActionEvent> openMenu = new EventHandler<ActionEvent>()
 		{ 
 			@Override 
 			public void handle(ActionEvent e) {
 				rootList.remove(form);
+				
+				User user = new User(username.getText(), password.getText());
+				
+				new CurrentUser(user);
 					
 				try
 				{
@@ -269,8 +346,7 @@ public class Test extends Application {
 					    
 		timeline.setOnFinished(openMenu);
 					    
-		host.addEventFilter(MouseEvent.MOUSE_CLICKED, buttonClick);
-		
+		login.addEventFilter(MouseEvent.MOUSE_CLICKED, buttonClick);
 	}
 	
 	public void mainMenu(Stage primaryStage, Group root)
@@ -280,18 +356,21 @@ public class Test extends Application {
 		Line line1 = new Line(25, 50, 975, 50);
 		rootList.add(line1);
 		
-		Line line2 = new Line(180, 60, 180, 580);
+		Line line2 = new Line(180, 60, 180, 480);
 		rootList.add(line2);
 		
+		//CREATING HUB
 		BorderPane hub = new BorderPane();
 		hub.setPadding(new Insets(20,20,20,20));
 		hub.setPrefWidth(980);
 		hub.setPrefHeight(580);
 		
+		//SETTING TOP (TITLE)
 		Text title = new Text("Campfire Knights");
 		title.setFont(medium);
 		hub.setTop(title);
 		
+		//SETTING LEFT (NAVBAR)
 		VBox navBar = new VBox();
 		navBar.setMaxWidth(175);
 		navBar.setSpacing(25);
@@ -310,6 +389,22 @@ public class Test extends Application {
 		navBar.getChildren().addAll(characters, map, lore);
 		
 		hub.setLeft(navBar);
+		
+		//SETTING RIGHT (CHATBOX)
+		new ChatViewer();
+		Message test1 = new Message(CurrentUser.get(), "Hey bb, wan sum fuk?");
+		Message test2 = new Message(CurrentUser.get(), "Not at all, my good sir/madame");
+		Message test3 = new Message(CurrentUser.get(), "oh, okay.");
+		
+		ChatViewer.add(test1);
+		ChatViewer.add(test2);
+		ChatViewer.add(test3);
+		
+		hub.setRight(ChatViewer.view());
+		
+		new DiceViewer();
+		
+		hub.setBottom(DiceViewer.view());
 		
 		rootList.add(hub);
 		
